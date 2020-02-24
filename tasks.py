@@ -13,34 +13,24 @@ app = Celery('tasks', broker='redis://localhost//', backend='db+postgresql://pos
 def grabPic(webaddress):
     sec = requests.get("http://image.thum.io/get/?url=http%3A%2F%2F{}%2F".format(webaddress), stream=True)
     # sec = requests.get("https://image.thum.io/get/auth/7730-moein/https://{}/".format(webaddress), stream=True)
-    # print(sec)
-    # image = base64.encodebytes(sec.content).decode("utf-8")
-    # image = Image.open(io.BytesIO(sec.content))
-    # image = image.convert("RGB")
-    # dd = io.BytesIO(sec.content)
     MyModel.update(sec.content)
+    data = GetHistory()
     response = {
             'content': sec.content,
-            'time': datetime.datetime.now()
+            'time': datetime.datetime.now(),
+            'data':data
         }
     return response
 
 @app.task
 def GetAll():
+    data = GetHistory()
+    return data
+
+def GetHistory():
     AllPic =  MyModel.GetPicturs()
-    # for pic in AllPic:
-        # res = AsyncResult(pic[0],app=app)
-        # print(res.state)
-        # print(res)
-        #  res.get()
     data=[]
     for pic in AllPic:
-        # p1 = pic[0]
-        # p2 = eval(p1)
-        # print(p2)
-        # data.append(pic)
         data.append(pic[0])
-        # data['pic'] = pic[0]
-        # data['date_time'] = pic[1]
     return data
 

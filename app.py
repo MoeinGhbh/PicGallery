@@ -16,42 +16,7 @@ def getHistory():
 @app.route("/")
 def index():
     data=  GetAll()
-    # print(data)
-    #   image
-    # binary_values = a_binary_string.split(" ")
-    # image.show()
-    # my_string = base64.b64encode(image[0])
-    # buffered = BytesIO()
-    # image.save(buffered, format="JPEG")
-    # img_str = base64.b64encode(buffered.getvalue())
-    # print(img_str)
-    # AllPic =  Model.GetPicturs()
-    # result =  grabPic.apply_async(countdown=10)
-    # result =  GetAll.delay()
-    # result.ready()
-    # imgBackend= result.get()
-    # print(imgBackend)
-    # data['img'] = base64.encodebytes(imgBackend['content']).decode("utf-8")
-    # for pic in AllPic:
-    #     current_place = {
-    #         'imgFile' : base64.encodebytes(pic[0]).decode("utf-8"),
-    #         'name' : pic[1]
-    #     }
-    # arry = []
-    # for pic in AllPic:
-    #     res = AsyncResult(pic[0],app=app)
-    #     res.state
-    #     print(res.get())
-        # pic[0].tos
-        # arry.append(base64.encodebytes(pic[0]).decode("utf-8"))
-        # image = Image.open(io.BytesIO(pic[0]))
-        # print(pic[0])
-        # arry.append(Image.open(io.BytesIO(pic[0])))
-        # arry.append(pic[0])
-        # for f in pic:
-            # print(f[0])
     return render_template('index.html',current_place=data)
-    # return render_template('index.html')
 
 
 @app.route("/grabScreenshot" , methods=["GET","POST"])
@@ -64,7 +29,7 @@ def getPic():
     data = {}
     data['img'] = base64.encodebytes(imgBackend['content']).decode("utf-8")
     # print(json.dumps(data))
-    return render_template('index.html', encode_image = data['img'] , name=imgBackend['time'] )
+    return render_template('index.html', encode_image = data['img'] , name=imgBackend['time'],current_place=imgBackend['data'] )
 
 
 @app.errorhandler(404)
