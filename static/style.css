@@ -1,0 +1,50 @@
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightblue;
+    margin: 40px;
+    padding: 40px;
+    width: 90%;
+}
+
+header {
+    background-color: #A5D6D9;
+}
+
+  h1 {
+    color: white;
+    text-align: center;
+  }
+  
+  p {
+    font-family: verdana;
+    font-size: 20px;
+  }
+
+
+th,
+td {
+    text-align: center;
+    border: 1px solid black;
+    margin: 40px;
+    padding: 40px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+#HirtoryDiv {
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+    overflow-x: scroll;
+
+}
+
+
+
+  

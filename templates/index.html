@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script>
+        function runList() {
+            var select = document.getElementById('webAddress');
+            var newAddress = document.getElementById('newAddress');
+            select.options[select.options.length] = new Option(newAddress.value, newAddress.value);
+        }
+    </script>
+
+    <header>
+        <h1>
+            Grap Screen Shoot
+        </h1>
+    </header>
+
+    <head>
+<body>
+
+<div>
+    <table>
+        <tr>
+            <td>
+                <form name="grabScreenshot" method="post" action='/grabScreenshot'>
+
+                    <table>
+                        <tr>
+                            <td>
+                                Your Options:
+
+                                <input TYPE="text" name="newAddress" id="newAddress"/>
+                                <INPUT TYPE="button" NAME="add item" VALUE="Click" onClick="runList()"/>
+                            </td>
+                            <td>
+                                Web Site Address :
+
+                                <select id="webAddress" name="webAddress">
+                                    <option value="www.google.com">www.google.com</option>
+                                    <option value="www.amazon.com">www.amazon.com</option>
+                                    <option value="www.bbc.com">www.bbc.com</option>
+                                    <option value="www.cnn.com">www.cnn.com</option>
+                                    <option value="www.bing.com">www.bing.com</option>
+                                </select>
+                                <input type="submit" value="Get">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <img src="data:image/png;base64, {{ encode_image }}"></img></br>
+                                <label > {{ name }} </label>
+
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h1>historical screenshots captured</h1>
+          
+                <div id="HirtoryDiv">
+                  
+                    {% for imges in current_place %}
+                    <img src="data:image/png;base64, {{ imges }}"></img>
+                    <!-- <img src="{{ imges }}" alt="User Image"> -->
+                     <!-- <label > {{ imges }} </label> -->
+                    {% endfor %}
+                    </br>
+                       
+                   
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html> 
