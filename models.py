@@ -11,7 +11,7 @@ class MyModel():
                                             port="5432",
                                             database="mydatabase")
             cursor = connection.cursor()
-            # postgreSQL_select_Query = "SELECT result, date_done  FROM public.celery_taskmeta order by date_done"
+
             postgreSQL_select_Query = "SELECT \
                                          pic \
                                          FROM public.pictures \

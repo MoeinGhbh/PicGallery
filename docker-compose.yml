@@ -11,7 +11,7 @@ services:
       context: .
       dockerfile: Dockerfile
     hostname: web
-    command: ./scripts/run_server.sh
+    command: ./scripts/run_app.sh
     volumes:
       - .:/app 
     ports:
@@ -23,7 +23,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ./scripts/run_celery.sh
+    command: ./scripts/install_redis.sh
+    command: ./scripts/run_redis.sh
     volumes:
       - .:/app
     links:
